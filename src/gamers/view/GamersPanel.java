@@ -17,8 +17,9 @@ public class GamersPanel extends JPanel
 	public GamersPanel(GuideController baseController)
 	{
 		this.baseController = baseController;
-		baseLayout = new SpringLayout();
 		appLabel = new JLabel("Look!  2D!");
+		
+		baseLayout = new SpringLayout();
 		myCellRender = new TableCellWrapRenderer();
 		
 		setupTable();
@@ -30,13 +31,15 @@ public class GamersPanel extends JPanel
 	private void setupTable()
 	{
 		String[] colHeader = { "Column 1", "Column 2" };
+		
 		gamesTable = new JTable(new DefaultTableModel(baseController.getMyGames(), colHeader));
-		tablePane = new JScrollPane(gamesTable);
 		
 		for (int col = 0; col < gamesTable.getColumnCount(); col++)
 		{
 			gamesTable.getColumnModel().getColumn(col).setCellRenderer(myCellRender);
 		}
+		
+		tablePane = new JScrollPane(gamesTable);
 	}
 	
 	private void setupPanel()
